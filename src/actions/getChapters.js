@@ -9,6 +9,9 @@ export const handleSetSections = (sections) => {
     return { type: 'SET_SECTIONS', sections }
 }
 
+export const handleSetChapterSections = (chapter_sections) => {
+    return { type: 'SET_CHAPTER_SECTIONS', chapter_sections }
+}
 
 export const handleFetch = dispatch => {
     fetch(urlChapters, {
@@ -19,6 +22,9 @@ export const handleFetch = dispatch => {
         }
     })
     .then(res => res.json())
-    .then(cData => {dispatch(handleSetChapters(cData.chapters)); dispatch(handleSetSections(cData.sections))}
+    .then(cData => {
+        dispatch(handleSetChapters(cData.chapters)); 
+        dispatch(handleSetSections(cData.sections)); 
+        dispatch(handleSetChapterSections(cData.chapter_sections))}
     )
   }
